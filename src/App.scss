@@ -1,3 +1,8 @@
 .app {
   background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  .app-container{
+  display: 'flex';
+  flex-direction: 'column';
+  min-height: '100vh';
+  }
 }
