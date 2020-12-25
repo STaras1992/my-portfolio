@@ -1,7 +1,7 @@
 import "./App.scss";
 import Header from "./components/Header/Header.js";
 import Hero from "./components/Hero/Hero.js";
-import Main from "./components/Main/Main.js";
+import Main from "./components/Work/Work.js";
 import Footer from "./components/Footer/Footer.js";
 import About from "./components/About/About.js";
 
