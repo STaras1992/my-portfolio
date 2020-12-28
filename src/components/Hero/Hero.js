@@ -7,10 +7,55 @@ import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    padding: theme.spacing(8, 0, 6),
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    maxWidth: '100vw',
   },
   heroButtons: {
     marginTop: theme.spacing(4),
+    '& Button': {
+      [theme.breakpoints.up('md')]: {
+        fontSize: '1.3rem',
+      },
+      [theme.breakpoints.up('lg')]: {
+        fontSize: '1.8rem',
+      },
+      [theme.breakpoints.up('xl')]: {
+        fontSize: '2rem',
+      },
+    },
+  },
+  nameTitle: {
+    fontWeight: 700,
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '3rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '4rem',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '4.5rem',
+    },
+    [theme.breakpoints.up('xl')]: {
+      fontSize: '5rem',
+    },
+  },
+  descriptionTitle: {
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '2rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2.5rem',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '3rem',
+    },
+    [theme.breakpoints.up('xl')]: {
+      fontSize: '3.5rem',
+    },
   },
 }));
 
@@ -19,12 +64,12 @@ const Hero = () => {
 
   return (
     <div className='hero'>
-      <div className={classes.heroContent}>
-        <Container maxWidth='md'>
-          <Typography component='h2' variant='h2' align='center' color='textPrimary' gutterBottom>
+      <div id='main' className={classes.heroContent}>
+        <Container className={classes.heroContent}>
+          <Typography className={classes.nameTitle} variant='h4' align='center' color='textPrimary' gutterBottom>
             I am Stas Tarasenko
           </Typography>
-          <Typography variant='h5' align='center' color='textSecondary' paragraph>
+          <Typography className={classes.descriptionTitle} variant='h5' align='center' color='textSecondary' paragraph>
             Full stack developer.
           </Typography>
           <div className={classes.heroButtons}>
@@ -35,7 +80,7 @@ const Hero = () => {
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant='outlined' color='primary'>
+                <Button variant='contained' color='secondary'>
                   My works
                 </Button>
               </Grid>
