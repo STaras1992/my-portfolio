@@ -8,14 +8,13 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  footer: {
+  root: {
     maxWidth: '100%',
     height: '300px',
     background: '#000000',
     background: '-webkit-linear-gradient(to left, #434343, #000000)',
     background: 'linear-gradient(to left, #434343, #000000)',
-    padding: theme.spacing(6),
-    marginTop: '300px',
+    marginTop: 'auto',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -51,7 +50,7 @@ const Footer = () => {
 
   return (
     <footer id='contact' className='footer'>
-      <Container className={classes.footer}>
+      <Container className={classes.root}>
         <Typography className={classes.title} variant='h5' align='center' gutterBottom>
           Contact me
         </Typography>

@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant='filled' {...props} />;
+}
 
 const initialValues = {
   name: '',
@@ -16,7 +22,9 @@ const initialValues = {
 const useStyle = makeStyles((theme) => ({
   root: {
     '& .MuiFormControl-root': {
-      width: '50%',
+      background: '#e3eeff',
+      width: '100%',
+      maxWidth: '700px',
       margin: theme.spacing(1),
     },
   },
@@ -27,7 +35,10 @@ const useStyle = makeStyles((theme) => ({
     alignItems: 'center',
   },
   textArea: {
-    width: '45%',
+    background: '#e3eeff',
+    width: '90%',
+    maxWidth: '650px',
+    marginBottom: '10px',
   },
   messageError: {
     display: 'none',
@@ -48,58 +59,95 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const MuiContactForm = () => {
+const MuiContactForm = ({ handleMessageSent }) => {
   const classes = useStyle();
-  const [values, setValues] = useState(initialValues);
+  const [formData, setFormData] = useState(initialValues);
   const [errors, setErrors] = useState({ email: '', message: '', name: '', subject: '' });
   const [visited, setVisited] = useState({ email: false, message: false, name: false, subject: false });
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [messageSendSucces, setMessageSentSucces] = useState(false);
 
   const validate = (field = null) => {
     let temp = {};
     if (!field || field === 'email') {
-      temp.email = /$^|.+@.+..+/.test(values.email) ? '' : 'Email is not valid';
-      temp.email = values.email !== '' ? temp.email : 'Email field is required';
+      temp.email = /$^|.+@.+..+/.test(formData.email) ? '' : 'Email is not valid';
+      temp.email = formData.email !== '' ? temp.email : 'Email field is required';
     } else temp.email = '';
     if (!field || field === 'message') {
-      temp.message = values.message ? '' : 'Message field is required';
+      temp.message = formData.message ? '' : 'Message field is required';
     } else temp.message = '';
     if (!field || field === 'name') {
-      temp.name = values.name.length < 25 ? '' : 'Maximum field length is 25 characters';
+      temp.name = formData.name.length < 25 ? '' : 'Maximum field length is 25 characters';
     } else temp.name = '';
     if (!field || field === 'subject') {
-      temp.subject = values.subject.length < 50 ? '' : 'Maximum field length is 50 characters';
+      temp.subject = formData.subject.length < 50 ? '' : 'Maximum field length is 50 characters';
     } else temp.subject = '';
 
     setErrors({ ...temp });
+
+    return temp.email === '' && temp.name === '' && temp.subject === '' && temp.message === '';
+  };
+
+  const resetForm = () => {
+    setFormData(initialValues);
+    setErrors({ email: '', message: '', name: '', subject: '' });
+    setVisited({ email: false, message: false, name: false, subject: false });
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.currentTarget;
     if (!visited[name]) setVisited({ ...visited, [name]: true });
-    setValues({ ...values, [name]: value });
+    setFormData({ ...formData, [name]: value });
     console.log(visited);
     console.log(errors);
   };
 
   useEffect(() => {
     if (visited.email) validate('email');
-  }, [values.email]);
+  }, [formData.email]);
 
   useEffect(() => {
     if (visited.name) validate('name');
-  }, [values.name]);
+  }, [formData.name]);
 
   useEffect(() => {
     if (visited.subject) validate('subject');
-  }, [values.subject]);
+  }, [formData.subject]);
 
   useEffect(() => {
     if (visited.message) validate('message');
-  }, [values.message]);
+  }, [formData.message]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validate();
+    if (validate()) {
+      axios({
+        method: 'POST',
+        url: 'http://localhost:3003/send',
+        data: formData,
+      }).then((response) => {
+        if (response.data.status === 'success') {
+          setMessageSentSucces(true);
+          setOpenSnackbar(true);
+          console.log('Message send');
+        } else if (response.data.status === 'fail') {
+          setMessageSentSucces(false);
+          setOpenSnackbar(true);
+          console.log('Failed to send message');
+        }
+      });
+    }
+    if (messageSendSucces) {
+      resetForm();
+      handleMessageSent();
+    }
+  };
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
   };
 
   return (
@@ -108,9 +156,9 @@ const MuiContactForm = () => {
         <Container className={classes.formContainer} maxWidth='lg'>
           <TextField
             variant='outlined'
-            label='Email'
+            label='Email*'
             name='email'
-            value={values.email}
+            value={formData.email}
             error={errors.email !== '' ? true : false}
             helperText={errors.email}
             onChange={handleInputChange}
@@ -119,7 +167,7 @@ const MuiContactForm = () => {
             variant='outlined'
             label='Name'
             name='name'
-            value={values.name}
+            value={formData.name}
             error={errors.name !== '' ? true : false}
             helperText={errors.name}
             onChange={handleInputChange}
@@ -128,17 +176,17 @@ const MuiContactForm = () => {
             variant='outlined'
             label='Subject'
             name='subject'
-            value={values.subject}
+            value={formData.subject}
             error={errors.subject !== '' ? true : false}
             helperText={errors.subject}
             onChange={handleInputChange}
           />
           <TextareaAutosize
             className={classes.textArea}
-            label='Message'
+            label='Message*'
             name='message'
             rowsMin={5}
-            value={values.message}
+            value={formData.message}
             // error={errors.message !== '' ? true : false}
             // helperText={errors.message}
             onChange={handleInputChange}
@@ -147,11 +195,21 @@ const MuiContactForm = () => {
             Message is required
           </div>
           <div>
-            <Button variant='contained' color='primary' type='submit' size='medium'>
+            <Button variant='contained' color='primary' type='submit' size='large'>
               Submit
             </Button>
           </div>
         </Container>
+        <Snackbar
+          anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+          open={openSnackbar}
+          autoHideDuration={3000}
+          onClose={handleCloseSnackbar}
+        >
+          <Alert onClose={handleCloseSnackbar} severity={messageSendSucces ? 'success' : 'error'}>
+            {messageSendSucces ? 'Message send' : 'Failed to send message'}
+          </Alert>
+        </Snackbar>
       </form>
     </div>
   );
