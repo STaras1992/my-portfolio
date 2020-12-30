@@ -224,7 +224,6 @@ const MuiContactForm = ({ handleMessageSent }) => {
             Message is required
           </div>
           <div>
-            {/* <Button variant='contained' color='primary' type='submit' size='large'> */}
             <Button className={classes.button} type='submit' variant='contained'>
               Submit
             </Button>
