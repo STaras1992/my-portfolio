@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import ProfileImage from '../../images/profile-image2.jpg';
 import Hidden from '@material-ui/core/Hidden';
+import { SUB_TITLE_COLOR, TEXT_COLOR } from '../../consts/colors.js';
 import './About.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   aboutTitle: {
+    color: SUB_TITLE_COLOR,
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.6rem',
     },
@@ -47,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   aboutText: {
+    color: TEXT_COLOR,
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.1rem',
     },
@@ -70,7 +73,7 @@ const About = () => {
       <Container className={classes.root} maxWidth='lg'>
         <Grid container spacing={2}>
           <Grid item md={12}>
-            <Typography className={classes.aboutTitle} variant='h5' align='left' color='primary'>
+            <Typography className={classes.aboutTitle} variant='h5' align='left'>
               About me
             </Typography>
           </Grid>

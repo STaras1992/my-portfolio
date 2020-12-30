@@ -1,5 +1,4 @@
-import './App.scss';
-import { Switch, Router } from 'react-router-dom';
+import './App.css';
 import Header from './components/Header/Header.js';
 import Hero from './components/Hero/Hero.js';
 import Work from './components/Work/Work.js';

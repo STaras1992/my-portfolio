@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { BLUE_COLOR } from '../../consts/colors.js';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -44,18 +45,48 @@ const useStyle = makeStyles((theme) => ({
     display: 'none',
   },
   messageErrorShow: {
-    width: '45%',
+    width: '100%',
     color: '#f44336',
     display: 'flex',
-    justifyContent: 'flex-start',
-    marginLeft: '14px',
+    justifyContent: 'center',
+    marginBottom: '3px',
     fontSize: '0.75rem',
-    marginTop: '3px',
     textAlign: 'left',
     fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
     fontWeight: '400',
     lineHeight: '1.66',
     letterSpacing: '0.03333em',
+  },
+  '@global': {
+    '.MuiFormHelperText-root': {
+      background: '#f3e7e9',
+      margin: 0,
+    },
+  },
+  button: {
+    background: 'black',
+    padding: '5px 20px',
+    color: 'white',
+    border: '3px solid #393a73',
+    borderRadius: '10px',
+    boxShadow: '0 10px 6px -6px white',
+    textTransform: 'none',
+    fontSize: '1.3rem',
+    fontWeight: 600,
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.5rem',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '1.8rem',
+    },
+    [theme.breakpoints.up('xl')]: {
+      fontSize: '2.2rem',
+    },
+    '&:hover': {
+      background: 'white',
+      color: 'black',
+      boxShadow: '0 10px 6px -6px black',
+    },
   },
 }));
 
@@ -187,15 +218,14 @@ const MuiContactForm = ({ handleMessageSent }) => {
             name='message'
             rowsMin={5}
             value={formData.message}
-            // error={errors.message !== '' ? true : false}
-            // helperText={errors.message}
             onChange={handleInputChange}
           />
           <div className={errors.message !== '' ? classes.messageErrorShow : classes.messageError}>
             Message is required
           </div>
           <div>
-            <Button variant='contained' color='primary' type='submit' size='large'>
+            {/* <Button variant='contained' color='primary' type='submit' size='large'> */}
+            <Button className={classes.button} type='submit' variant='contained'>
               Submit
             </Button>
           </div>

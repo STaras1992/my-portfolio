@@ -89,8 +89,8 @@ const useStyles = makeStyles(() => ({
     fontSize: '2.5rem',
   },
   active: {
-    fontWeight: 800,
-    color: 'red',
+    // fontWeight: 800,
+    // color: 'red',
   },
 }));
 

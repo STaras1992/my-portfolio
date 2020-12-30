@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import getProjects from '../../utills/getProjects.js';
+import { SUB_TITLE_COLOR, TITLE_COLOR, TEXT_COLOR } from '../../consts/colors.js';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -23,25 +24,38 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
+
   cardMedia: {
     paddingTop: '56.25%', // 16:9
     borderBottom: '2px solid #ccc',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
   },
+
   cardContent: {
     flexGrow: 1,
   },
+
   cardActions: {
     paddingLeft: '16px',
   },
+
   cardTitle: {
-    color: '#394bad',
+    color: TITLE_COLOR,
     fontWeight: 'bold',
   },
-  cardDescription: {},
+
+  cardDescription: {
+    color: TEXT_COLOR,
+  },
+
   cardTools: {
-    fontWeight: 'bold',
+    color: TEXT_COLOR,
+    fontWeight: 600,
   },
+
   actionButton: {
+    fontWeight: 'bold',
     '&:hover': {
       textDecoration: 'none',
       cursor: 'pointer',
