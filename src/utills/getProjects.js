@@ -1,6 +1,6 @@
 import angelProject from '../images/angelProject.png';
 import androidProject from '../images/fastProject.png';
-import openGLProject from '../images/openGLProject.png';
+//import openGLProject from '../images/openGLProject.png';
 import kzatAheretProject from '../images/kzatAheretProject.png';
 import serverGamesProject from '../images/serverGamesProject.png';
 import colorProProject from '../images/colorProProject.png';
@@ -29,7 +29,7 @@ const projects = [
     description:
       'Graphics project.Desctop application for creating and design different types of trees on different landscapes.With shadows controlled by light position and lake area for reflection',
     tools: 'C#, .NET, OpenGl, Windows Forms, Visual Studio',
-    image: openGLProject,
+    image: kzatAheretProject,
     adress: '#',
     source: 'https://github.com/STaras1992/ForestCreator',
   },
