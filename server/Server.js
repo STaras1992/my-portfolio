@@ -4,21 +4,21 @@ const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 
-dotenv.config({ path: '../config.env' });
+dotenv.config({ path: './config.env' });
 
 /* Mailtrap */
-var transport = {
-  host: 'smtp.mailtrap.io',
-  port: 2525,
-  auth: {
-    user: '175c91d9dc0767',
-    pass: 'e9eaf3adc3ac30',
-  },
-};
+// const transport = {
+//   host: 'smtp.mailtrap.io',
+//   port: 2525,
+//   auth: {
+//     user: '175c91d9dc0767',
+//     pass: 'e9eaf3adc3ac30',
+//   },
+// };
 
 /* Gmail */
 
-var transport = {
+const transport = {
   service: 'gmail',
   auth: {
     type: 'OAuth2',
@@ -30,7 +30,7 @@ var transport = {
   },
 };
 
-var transporter = nodemailer.createTransport(transport);
+const transporter = nodemailer.createTransport(transport);
 
 transporter.verify((error, success) => {
   if (error) {
@@ -47,13 +47,12 @@ router.post('/send', (req, res, next) => {
   const message = req.body.message;
   const content = `name: ${name} \n  \n message: ${message} `;
 
-  var mail = {
+  const mail = {
     from: email,
     to: 'starasp1992@gmail.com',
     subject: subject,
     text: content,
   };
-  console.log(req.body);
 
   transporter.sendMail(mail, (err, data) => {
     console.log(err);
@@ -73,4 +72,4 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '1mb' }));
 app.use('/', router);
-app.listen(process.env.PORT || 3003);
+app.listen(process.env.PORT || 4000);
