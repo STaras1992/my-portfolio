@@ -19,6 +19,25 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(8),
     marginBottom: '100px',
   },
+
+  title: {
+    color: SUB_TITLE_COLOR,
+    marginBottom: '30px',
+    fontFamily: 'Kanit, sans-serif',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.6rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2rem',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '2.5rem',
+    },
+    [theme.breakpoints.up('xl')]: {
+      fontSize: '3rem',
+    },
+  },
+
   card: {
     height: '100%',
     display: 'flex',
@@ -42,15 +61,19 @@ const useStyles = makeStyles((theme) => ({
 
   cardTitle: {
     color: TITLE_COLOR,
-    fontWeight: 'bold',
+    fontSize: '24px',
+    fontWeight: 800,
   },
 
   cardDescription: {
     color: TEXT_COLOR,
+    fontFamily: 'Roboto, sans-serif',
   },
 
   cardTools: {
     color: TEXT_COLOR,
+    fontFamily: 'Noto Sans, sans-serif',
+    fontSize: '18px',
     fontWeight: 600,
   },
 
@@ -75,7 +98,7 @@ const Work = () => {
           <Typography className={classes.cardTitle} gutterBottom variant='h6'>
             {project.title}
           </Typography>
-          <Typography className={classes.cardDescription} gutterBottom variant='body2'>
+          <Typography className={classes.cardDescription} gutterBottom>
             {project.description}
           </Typography>
           <Typography className={classes.cardTools} variant='body1'>{`Tools:${project.tools}`}</Typography>
@@ -117,6 +140,9 @@ const Work = () => {
   return (
     <section id='work'>
       <Container className={classes.cardGrid} maxWidth='lg'>
+        <Typography className={classes.title} variant='h4' align='left'>
+          My works
+        </Typography>
         <Grid container spacing={4}>
           {cards}
         </Grid>

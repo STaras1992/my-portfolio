@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
       border: '3px solid #393a73',
       boxShadow: '0 10px 6px -6px white',
       textTransform: 'none',
+      fontFamily: 'Russo One, sans-serif',
       fontSize: '1.3rem',
       [theme.breakpoints.up('md')]: {
         fontSize: '1.5rem',
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
   nameTitle: {
     fontWeight: 800,
     color: TITLE_COLOR,
+    fontFamily: 'Kanit, sans-serif',
     [theme.breakpoints.up('sm')]: {
       fontSize: '3rem',
     },
@@ -59,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   descriptionTitle: {
     color: SUB_TITLE_COLOR,
+    fontFamily: 'Source Sans Pro, sans-serif',
     [theme.breakpoints.up('sm')]: {
       fontSize: '2rem',
     },

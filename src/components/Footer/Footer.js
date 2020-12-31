@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
   title: {
     color: 'white',
+    fontFamily: 'Kanit, sans-serif',
     marginBottom: '30px',
     [theme.breakpoints.down('xs')]: {
       marginBottom: 0,

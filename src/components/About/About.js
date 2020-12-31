@@ -14,11 +14,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '100vh',
-    [theme.breakpoints.up('md')]: {
-      height: '100%',
-      marginBottom: '200px',
-    },
+    height: '100%',
+    marginBottom: '100px',
   },
   avatarContainer: {
     display: 'flex',
@@ -35,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   aboutTitle: {
     color: SUB_TITLE_COLOR,
+    fontFamily: 'Kanit, sans-serif',
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.6rem',
     },
@@ -50,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   aboutText: {
     color: TEXT_COLOR,
+    fontSize: '1.2rem',
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.1rem',
     },
@@ -73,20 +72,29 @@ const About = () => {
       <Container className={classes.root} maxWidth='lg'>
         <Grid container spacing={2}>
           <Grid item md={12}>
-            <Typography className={classes.aboutTitle} variant='h5' align='left'>
+            <Typography className={classes.aboutTitle} variant='h4' align='left'>
               About me
             </Typography>
           </Grid>
           <Grid item sm={12} md={9}>
-            <Typography className={classes.aboutText} variant='body1' align='left' color='default' component='p'>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as
-              necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin
-              words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks
-              reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or
-              non-characteristic words etc.
+            <Typography className={classes.aboutText} variant='body1' align='left'>
+              I am a 28 year old software developer from Rehovot, originally from Ukraine. My passion is technology and
+              science. As a result of that I have previous studies in electronics and computer science and military
+              service in technology unit. One of my standout characteristics is honesty, even though sometimes it's
+              plays against me I am still like that. I was always interested in how things work and I was always looking
+              for answers even though they were not always completely understood.
+              <br />
+              Very good self-learning ability and fast adaptation describes me well. For example as a new immigrant it
+              took me only one year for adapt to new environment at school, already in the second year I was excellent
+              in most subjects. In addition throughout my degree studies I combined work and studies, that did not
+              prevent me from receiving high grades. I have a very high level of discipline and devotion to work .I
+              always was among the leaders and tried to excel in everything I do. As an example at my previous studies I
+              graduated with honors, as well as in my military service. My interpersonal skills are excellent because I
+              have an extraordinary sense of humor and extraordinary personality that helps me connect with people and
+              work in a team without any problem. Beside my passion to high-tech world, I am very interested in medicine
+              and psychology. Some of my hobbies are billiard and poker. Also I'm a big football fan from a young age.
+              I'm always happy to talk with new person and learn things I didn't know before. So just contact me and you
+              will not regret it ...
             </Typography>
           </Grid>
           <Hidden smDown>

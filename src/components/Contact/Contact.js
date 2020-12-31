@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Slide from '@material-ui/core/Slide';
-import Grow from '@material-ui/core/Grow';
-import Collapse from '@material-ui/core/Collapse';
 import Zoom from '@material-ui/core/Zoom';
 import Container from '@material-ui/core/Container';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import MailIcon from '@material-ui/icons/Mail';
 import MuiContactForm from './MuiContactForm.js';
-import { BLUE_COLOR } from '../../consts/colors.js';
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -30,7 +26,6 @@ const useStyle = makeStyles((theme) => ({
       marginRight: '200px',
     },
   },
-
   writeMe: {
     cursor: 'pointer',
     color: 'red',
@@ -44,14 +39,15 @@ const useStyle = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    // animation: `$fadeIn 3000ms ${theme.transitions.easing.easeInOut}`,
   },
   titleBefore: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: '1.2rem',
+    fontSize: '1.3rem',
+    fontWeight: 600,
+    marginBottom: '20px',
     [theme.breakpoints.up('xs')]: {
       fontSize: '2rem',
     },

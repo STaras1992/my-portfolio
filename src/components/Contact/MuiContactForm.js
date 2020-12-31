@@ -73,6 +73,7 @@ const useStyle = makeStyles((theme) => ({
     textTransform: 'none',
     fontSize: '1.3rem',
     fontWeight: 600,
+    fontFamily: 'Russo One, sans-serif',
     [theme.breakpoints.up('md')]: {
       fontSize: '1.5rem',
     },
@@ -97,6 +98,7 @@ const MuiContactForm = ({ handleMessageSent }) => {
   const [visited, setVisited] = useState({ email: false, message: false, name: false, subject: false });
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [messageSendSucces, setMessageSentSucces] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const validate = (field = null) => {
     let temp = {};
@@ -149,25 +151,34 @@ const MuiContactForm = ({ handleMessageSent }) => {
     if (visited.message) validate('message');
   }, [formData.message]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      axios({
-        method: 'POST',
-        url: 'http://localhost:3003/send',
-        data: formData,
-      }).then((response) => {
-        if (response.data.status === 'success') {
-          setMessageSentSucces(true);
-          setOpenSnackbar(true);
-          console.log('Message send');
-        } else if (response.data.status === 'fail') {
-          setMessageSentSucces(false);
-          setOpenSnackbar(true);
-          console.log('Failed to send message');
-        }
-      });
+      setIsSending(true);
+      try {
+        await axios({
+          method: 'POST',
+          url: 'http://localhost:4000/send',
+          data: formData,
+        }).then((response) => {
+          console.log(response);
+          if (response.data.status === 'success') {
+            setMessageSentSucces(true);
+            setOpenSnackbar(true);
+            console.log('Message send');
+          } else if (response.data.status === 'fail') {
+            setMessageSentSucces(false);
+            setOpenSnackbar(true);
+            console.log('Failed to send message');
+          }
+        });
+      } catch (e) {
+        console.log(e);
+        setMessageSentSucces(false);
+        setOpenSnackbar(true);
+      }
     }
+    setIsSending(false);
     if (messageSendSucces) {
       resetForm();
       handleMessageSent();
@@ -224,15 +235,15 @@ const MuiContactForm = ({ handleMessageSent }) => {
             Message is required
           </div>
           <div>
-            <Button className={classes.button} type='submit' variant='contained'>
-              Submit
+            <Button disabled={isSending} className={classes.button} type='submit' variant='contained'>
+              Send
             </Button>
           </div>
         </Container>
         <Snackbar
           anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
           open={openSnackbar}
-          autoHideDuration={3000}
+          autoHideDuration={5000}
           onClose={handleCloseSnackbar}
         >
           <Alert onClose={handleCloseSnackbar} severity={messageSendSucces ? 'success' : 'error'}>
