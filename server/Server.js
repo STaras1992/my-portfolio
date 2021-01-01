@@ -40,12 +40,12 @@ transporter.verify((error, success) => {
   }
 });
 
-router.post('/send', (req, res, next) => {
+router.post('/api/send', (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
   const subject = req.body.subject;
   const message = req.body.message;
-  const content = `name: ${name} \n  \n message: ${message} `;
+  const content = `name: ${name} \n email:${email} \n message: ${message} `;
 
   const mail = {
     from: email,
@@ -55,7 +55,6 @@ router.post('/send', (req, res, next) => {
   };
 
   transporter.sendMail(mail, (err, data) => {
-    console.log(err);
     if (err) {
       res.json({
         status: 'fail',
@@ -66,6 +65,10 @@ router.post('/send', (req, res, next) => {
       });
     }
   });
+});
+
+router.get('/api/get', (req, res, next) => {
+  res.send('Hello stas');
 });
 
 const app = express();

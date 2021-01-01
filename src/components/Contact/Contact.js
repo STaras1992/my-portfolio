@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Zoom from '@material-ui/core/Zoom';
@@ -118,26 +118,13 @@ const Contact = () => {
         <Container className={classes.container} maxWidth='lg'>
           <div className={classes.contactTitle}>
             <Typography className={classes.titleBefore} textAlign='center' variant='subtitle2'>
-              {/* If you have any request or recommendation please write me */}
               Write me &nbsp;
               {showContactForm ? (
                 <DraftsIcon className={classes.formIcon} onClick={handleShowContactForm} />
               ) : (
                 <MailIcon className={classes.formIcon} onClick={handleShowContactForm} />
               )}
-              {/* <span className={classes.writeMe} onClick={handleShowContactForm}>
-                &nbsp;write me
-              </span> */}
             </Typography>
-            {/* &nbsp;
-            <Typography
-              className={classes.writeMe}
-              variant='subtitle2'
-              color='secondary'
-              onClick={handleShowContactForm}
-            >
-              write me
-            </Typography> */}
           </div>
           {showContactForm && (
             <Zoom in={true} timeout={1500}>
@@ -147,7 +134,7 @@ const Contact = () => {
                 </div>
                 {isMessageSent && (
                   <Typography className={classes.titleAfter} variant='subtitle1'>
-                    Thanks you for your time,i appreciate that.
+                    Thank you for your time,i appreciate that.
                   </Typography>
                 )}
               </div>

@@ -7,10 +7,9 @@ import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import { BLUE_COLOR } from '../../consts/colors.js';
 
 function Alert(props) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
+  return <MuiAlert elevation={6} style={{ fontSize: '30px' }} variant='filled' {...props} />;
 }
 
 const initialValues = {
@@ -158,18 +157,16 @@ const MuiContactForm = ({ handleMessageSent }) => {
       try {
         await axios({
           method: 'POST',
-          url: 'http://localhost:4000/send',
+          //url: 'http://localhost:4000/send',
+          url: 'http://3.120.243.234/api/send',
           data: formData,
         }).then((response) => {
-          console.log(response);
           if (response.data.status === 'success') {
             setMessageSentSucces(true);
             setOpenSnackbar(true);
-            console.log('Message send');
           } else if (response.data.status === 'fail') {
             setMessageSentSucces(false);
             setOpenSnackbar(true);
-            console.log('Failed to send message');
           }
         });
       } catch (e) {
@@ -241,13 +238,14 @@ const MuiContactForm = ({ handleMessageSent }) => {
           </div>
         </Container>
         <Snackbar
+          className={classes.snackbar}
           anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
           open={openSnackbar}
-          autoHideDuration={5000}
+          autoHideDuration={3000}
           onClose={handleCloseSnackbar}
         >
           <Alert onClose={handleCloseSnackbar} severity={messageSendSucces ? 'success' : 'error'}>
-            {messageSendSucces ? 'Message send' : 'Failed to send message'}
+            {messageSendSucces ? 'Message sent' : 'Failed to send message'}
           </Alert>
         </Snackbar>
       </form>
