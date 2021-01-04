@@ -158,7 +158,7 @@ const MuiContactForm = ({ handleMessageSent }) => {
         await axios({
           method: 'POST',
           //url: 'http://localhost:4000/send',
-          url: 'http://3.120.243.234/api/send',
+          url: 'http://18.193.76.149//api/send',
           data: formData,
         }).then((response) => {
           if (response.data.status === 'success') {
