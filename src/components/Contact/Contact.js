@@ -62,6 +62,7 @@ const useStyle = makeStyles((theme) => ({
     fontSize: '3.5rem',
     cursor: 'pointer',
     transition: 'all 0.6s',
+
     [theme.breakpoints.up('xs')]: {
       fontSize: '4.5rem',
     },
@@ -72,16 +73,7 @@ const useStyle = makeStyles((theme) => ({
       fontSize: '6rem',
     },
     '&:hover': {
-      fontSize: '3.8rem',
-      [theme.breakpoints.up('xs')]: {
-        fontSize: '5rem',
-      },
-      [theme.breakpoints.up('sm')]: {
-        fontSize: '5.5rem',
-      },
-      [theme.breakpoints.up('md')]: {
-        fontSize: '6.5rem',
-      },
+      transform: 'scale(1.2)',
     },
   },
   titleAfter: {

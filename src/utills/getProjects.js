@@ -1,20 +1,30 @@
-import angelProject from '../images/angelProject.png';
+//import angelProject from '../images/angelProject.png';
 import androidProject from '../images/fastProject.png';
 import openglProject from '../images/opengl.png';
 import kzatAheretProject from '../images/kzatAheretProject.png';
 import serverGamesProject from '../images/serverGamesProject.png';
-import colorProProject from '../images/colorProProject.png';
+//import colorProProject from '../images/colorProProject.png';
 import parkingProject from '../images/parkingProject.png';
 import portfolioProject from '../images/portfolioProject.png';
+import cvManagerProject from '../images/cvManager.png';
 
 const projects = [
   {
     title: 'My portfolio',
     description: 'Portfolio site.',
-    tools: 'JavaScript, React, Material-UI, HTML, CSS, VS Code,GITHub',
+    tools: 'JavaScript, Node.js, React, Material-UI, Nodemailer, HTML, CSS, VS Code,GITHub, ubuntu, nginx',
     image: portfolioProject,
     adress: '#',
     source: 'https://github.com/STaras1992/my-portfolio',
+  },
+  {
+    title: 'CV Manager',
+    description: 'Resource management web app for easy and accessible job apply.',
+    tools:
+      'JavaScript, Node.js, React, Redux, Material-UI, Nodemailer, jwt, Draft-js, HTML, CSS, AWS, S3, RDS, ubuntu, nginx',
+    image: cvManagerProject,
+    adress: 'https://github.com/STaras1992/cv-manager',
+    source: 'https://cv-manager.tk',
   },
   {
     title: 'Kzat Aheret',
@@ -33,15 +43,15 @@ const projects = [
     adress: '#',
     source: 'https://github.com/STaras1992/ForestCreator',
   },
-  {
-    title: 'Color pro',
-    description:
-      'App for design color palettes.You can easely create custom color or palette and use it in your projects.',
-    tools: 'JavaScript, React, Material-UI, HTML, CSS, VS Code,GITHub,GITHub Pages',
-    image: colorProProject,
-    adress: 'https://staras1992.github.io/ColorPro/',
-    source: 'https://github.com/STaras1992/ColorPro',
-  },
+  // {
+  //   title: 'Color pro',
+  //   description:
+  //     'App for design color palettes.You can easely create custom color or palette and use it in your projects.',
+  //   tools: 'JavaScript, React, Material-UI, HTML, CSS, VS Code,GITHub,GITHub Pages',
+  //   image: colorProProject,
+  //   adress: 'https://staras1992.github.io/ColorPro/',
+  //   source: 'https://github.com/STaras1992/ColorPro',
+  // },
   {
     title: 'Parking controll app',
     description: 'Desktop app for parking controll and payments.Developed while my free time at job.',
@@ -50,14 +60,14 @@ const projects = [
     adress: '#',
     source: 'https://github.com/STaras1992/Parking-app',
   },
-  {
-    title: 'Salon Angel',
-    description: 'Desctop application for nail salon appointment management.',
-    tools: 'Java, MVC, Swing, Eclipse',
-    image: angelProject,
-    adress: '#',
-    source: 'https://github.com/STaras1992/AngelSalonProject',
-  },
+  // {
+  //   title: 'Salon Angel',
+  //   description: 'Desctop application for nail salon appointment management.',
+  //   tools: 'Java, MVC, Swing, Eclipse',
+  //   image: angelProject,
+  //   adress: '#',
+  //   source: 'https://github.com/STaras1992/AngelSalonProject',
+  // },
   {
     title: 'Fast and Smart',
     description:

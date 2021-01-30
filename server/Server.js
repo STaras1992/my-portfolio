@@ -56,20 +56,20 @@ router.post('/api/send', (req, res, next) => {
 
   transporter.sendMail(mail, (err, data) => {
     if (err) {
-      res.json({
+      res.status(500).json({
         status: 'fail',
       });
     } else {
-      res.json({
+      res.status(200).json({
         status: 'success',
       });
     }
   });
 });
 
-router.get('/api/get', (req, res, next) => {
-  res.send('Hello stas');
-});
+// router.get('/api/get', (req, res, next) => {
+//   res.send('Hello stas');
+// });
 
 const app = express();
 app.use(cors());

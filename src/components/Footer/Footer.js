@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   contactIconAvatar: {
+    '-webkit-tap-highlight-color': 'transparent',
     width: '80px',
     height: '80px',
     margin: '15px',
@@ -70,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
     border: '5px solid #393a73',
     boxShadow: '4px 4px 4px 4px rgb(0, 0, 0)',
     cursor: 'pointer',
+    transition: 'all 0.5s',
     [theme.breakpoints.down('xs')]: {
       marginTop: '30px',
     },
@@ -78,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
       '& svg': {
         color: 'white',
       },
-      transition: 'all 0.7s',
+      //transition: 'all 0.7s',
     },
   },
 
@@ -92,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       marginLeft: '-30px',
       fontSize: '18px',
-      content: '"stas23061992@gmail.com"',
+      content: '"starasp1992@gmail.com"',
       display: 'block',
       color: 'white',
     },
@@ -138,7 +140,7 @@ const Footer = () => {
         </Typography>
         <div className={classes.contactIconsContainer}>
           <div className={classes.mailContainer}>
-            <Link href='mailto:stas23061992@gmail.com' target='_blank' rel='noreferrer'>
+            <Link href='mailto:starasp1992@gmail.com' target='_blank' rel='noreferrer'>
               <Avatar className={classes.contactIconAvatar}>
                 <MailOutlineIcon className={classes.contactIcon} />
               </Avatar>
@@ -157,30 +159,6 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-        {/* <Container className={classes.footerContent} maxWidth='lg'>
-          <Typography className={classes.contact} variant='subtitle1'>
-            <MailOutlineIcon />
-            <Link href='mailto:stas23061992@gmail.com' rel='noreferrer'>
-              stas23061992@gmail.com
-            </Link>
-          </Typography>
-          <Typography className={classes.contact} variant='subtitle1'>
-            <LinkedInIcon />
-            <Link
-              href='www.linkedin.com/in/staras1992'
-              target='_blank'
-              rel='noreferrer'
-            >
-              linkedin/staras1992
-            </Link>
-          </Typography>
-          <Typography className={classes.contact} variant='subtitle1'>
-            <PhoneAndroidIcon />
-            <Link href='#' onClick={(event) => event.preventDefault()} rel='noreferrer'>
-              0549105055
-            </Link>
-          </Typography>
-        </Container> */}
       </Container>
     </footer>
   );

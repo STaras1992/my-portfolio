@@ -130,8 +130,6 @@ const MuiContactForm = ({ handleMessageSent }) => {
     const { name, value } = e.currentTarget;
     if (!visited[name]) setVisited({ ...visited, [name]: true });
     setFormData({ ...formData, [name]: value });
-    console.log(visited);
-    console.log(errors);
   };
 
   useEffect(() => {
@@ -151,14 +149,15 @@ const MuiContactForm = ({ handleMessageSent }) => {
   }, [formData.message]);
 
   const handleSubmit = async (e) => {
+    console.log(formData);
     e.preventDefault();
     if (validate()) {
       setIsSending(true);
       try {
         await axios({
           method: 'POST',
-          //url: 'http://localhost:4000/send',
-          url: 'http://18.193.76.149/api/send',
+          url: 'http://localhost:4001/api/send',
+          // url: 'http://18.193.76.149/api/send',
           data: formData,
         }).then((response) => {
           if (response.data.status === 'success') {
@@ -170,7 +169,6 @@ const MuiContactForm = ({ handleMessageSent }) => {
           }
         });
       } catch (e) {
-        console.log(e);
         setMessageSentSucces(false);
         setOpenSnackbar(true);
       }
