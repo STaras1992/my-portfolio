@@ -10,21 +10,21 @@ import cvManagerProject from '../images/cvManager.png';
 
 const projects = [
   {
-    title: 'My portfolio',
-    description: 'Portfolio site.',
-    tools: 'JavaScript, Node.js, React, Material-UI, Nodemailer, HTML, CSS, VS Code,GITHub, ubuntu, nginx',
-    image: portfolioProject,
-    adress: '#',
-    source: 'https://github.com/STaras1992/my-portfolio',
-  },
-  {
     title: 'CV Manager',
     description: 'Resource management web app for easy and accessible job apply.',
     tools:
       'JavaScript, Node.js, React, Redux, Material-UI, Nodemailer, jwt, Draft-js, HTML, CSS, AWS, S3, RDS, ubuntu, nginx',
     image: cvManagerProject,
-    adress: 'https://github.com/STaras1992/cv-manager',
-    source: 'https://cv-manager.tk',
+    adress: 'https://cv-manager.tk',
+    source: 'https://github.com/STaras1992/cv-manager',
+  },
+  {
+    title: 'My portfolio',
+    description: 'Portfolio site.',
+    tools: 'JavaScript, Node.js, React, Material-UI, Nodemailer, HTML, CSS, VS Code, GITHub, ubuntu, nginx',
+    image: portfolioProject,
+    adress: '#',
+    source: 'https://github.com/STaras1992/my-portfolio',
   },
   {
     title: 'Kzat Aheret',

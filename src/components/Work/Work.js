@@ -42,11 +42,20 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    transition: 'all 0.4s ease-in-out',
+    '&:hover': {
+      zIndex: 100,
+      transform: 'scale(1.13)',
+      [theme.breakpoints.down('xs')]: {
+        transform: 'scale(1.04)',
+      },
+    },
   },
 
   cardMedia: {
     paddingTop: '56.25%', // 16:9
     borderBottom: '2px solid #ccc',
+    borderTop: '2px solid #ccc',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
   },
@@ -56,23 +65,34 @@ const useStyles = makeStyles((theme) => ({
   },
 
   cardActions: {
-    paddingLeft: '16px',
+    paddingLeft: '8px',
   },
 
   cardTitle: {
     color: TITLE_COLOR,
-    fontSize: '24px',
+    fontSize: '26px',
     fontWeight: 800,
   },
 
   cardDescription: {
     color: TEXT_COLOR,
     fontFamily: 'Roboto, sans-serif',
+    fontWeight: 500,
+    fontSize: '17px',
   },
-
-  cardTools: {
+  tools: {
+    marginTop: '20px',
+    marginBottom: '8px',
+  },
+  toolsTitle: {
+    color: TITLE_COLOR,
+    // fontFamily: 'Noto Sans, sans-serif',
+    fontSize: '20px',
+    fontWeight: 800,
+  },
+  toolsList: {
     color: TEXT_COLOR,
-    fontFamily: 'Noto Sans, sans-serif',
+    // fontFamily: 'Noto Sans, sans-serif',
     fontSize: '18px',
     fontWeight: 600,
   },
@@ -88,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Work = () => {
   const classes = useStyles();
-  const [projects, setProjects] = useState(getProjects());
+  const [projects] = useState(getProjects());
 
   const cards = projects.map((project) => (
     <Grid item key={project.title} xs={12} sm={6} md={4}>
@@ -101,7 +121,14 @@ const Work = () => {
           <Typography className={classes.cardDescription} gutterBottom>
             {project.description}
           </Typography>
-          <Typography className={classes.cardTools} variant='body1'>{`Tools:${project.tools}`}</Typography>
+          <div className={classes.tools}>
+            <Typography className={classes.toolsTitle} variant='h6'>
+              Tools:
+            </Typography>
+            <Typography className={classes.toolsList} variant='body1'>
+              {project.tools}
+            </Typography>
+          </div>
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Button>

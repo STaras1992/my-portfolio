@@ -16,7 +16,7 @@ const headersData = [
   },
   {
     label: 'Resume',
-    to: 'https://stas-docs.s3.eu-central-1.amazonaws.com/StasTarasenkoCV_2020_Eng.pdf',
+    to: 'https://stas-docs.s3.eu-central-1.amazonaws.com/StasTarasenkoCV_Eng.pdf',
   },
   {
     label: 'Contact',
