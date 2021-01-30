@@ -4,19 +4,7 @@ const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 
-dotenv.config({ path: './config.env' });
-
-/* Mailtrap */
-// const transport = {
-//   host: 'smtp.mailtrap.io',
-//   port: 2525,
-//   auth: {
-//     user: '175c91d9dc0767',
-//     pass: 'e9eaf3adc3ac30',
-//   },
-// };
-
-/* Gmail */
+dotenv.config({ path: './.env' });
 
 const transport = {
   service: 'gmail',
@@ -49,6 +37,7 @@ router.post('/api/send', (req, res, next) => {
 
   const mail = {
     from: email,
+    replyTo: email,
     to: 'starasp1992@gmail.com',
     subject: subject,
     text: content,
@@ -66,10 +55,6 @@ router.post('/api/send', (req, res, next) => {
     }
   });
 });
-
-// router.get('/api/get', (req, res, next) => {
-//   res.send('Hello stas');
-// });
 
 const app = express();
 app.use(cors());

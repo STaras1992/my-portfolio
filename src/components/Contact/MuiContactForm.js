@@ -149,14 +149,13 @@ const MuiContactForm = ({ handleMessageSent }) => {
   }, [formData.message]);
 
   const handleSubmit = async (e) => {
-    console.log(formData);
     e.preventDefault();
     if (validate()) {
       setIsSending(true);
       try {
         await axios({
           method: 'POST',
-          url: 'http://localhost:4001/api/send',
+          url: process.env.NODE_ENV === 'production' ? '/api/send' : 'http://localhost:4001/api/send',
           // url: 'http://18.193.76.149/api/send',
           data: formData,
         }).then((response) => {
