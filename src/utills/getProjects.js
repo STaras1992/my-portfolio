@@ -1,22 +1,30 @@
-//import angelProject from '../images/angelProject.png';
 import androidProject from '../images/fastProject.png';
 import openglProject from '../images/opengl.png';
 import kzatAheretProject from '../images/kzatAheretProject.png';
 import serverGamesProject from '../images/serverGamesProject.png';
-//import colorProProject from '../images/colorProProject.png';
 import parkingProject from '../images/parkingProject.png';
 import portfolioProject from '../images/portfolioProject.png';
 import cvManagerProject from '../images/cvManager.png';
+import mytop3Project from '../images/mytop3.png';
 
 const projects = [
   {
     title: 'CV Manager',
     description: 'Resource management web app for easy and accessible job apply.',
     tools:
-      'JavaScript, Node.js, React, Redux, Material-UI, Nodemailer, jwt, Draft-js, HTML, CSS, AWS, S3, RDS, ubuntu, nginx',
+      'JavaScript, Node.js, React, Redux, Material-UI, Nodemailer, jwt, Draft-js, HTML, SCSS, AWS, S3, RDS, ubuntu, nginx',
     image: cvManagerProject,
     adress: 'https://cv-manager.tk',
     source: 'https://github.com/STaras1992/cv-manager',
+  },
+  {
+    title: 'MyTop3',
+    description:
+      'Movies app for easy search info about movies using API.But main purpose is to search,share and rate movies recommendations.Currently working on that... ',
+    tools: 'JavaScript, Node.js, React, Redux, Material-UI, HTML, SCSS,VS Code, GITHub, AWS, ubuntu, nginx, TMDB API',
+    image: mytop3Project,
+    adress: 'https://mytop3.tk',
+    source: 'https://github.com/STaras1992/mytop3',
   },
   {
     title: 'My portfolio',
@@ -54,7 +62,7 @@ const projects = [
   // },
   {
     title: 'Parking controll app',
-    description: 'Desktop app for parking controll and payments.Developed while my free time at job.',
+    description: 'Desktop app for parking controll.Developed while my free time at job (Controll room operator).',
     tools: 'C#, Real time, .NET, Windows Forms, Visual Studio,',
     image: parkingProject,
     adress: '#',
